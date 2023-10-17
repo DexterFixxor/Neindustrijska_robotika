@@ -5,7 +5,7 @@ FROM ros:noetic-perception-focal as base
 
 ARG WS_DIR
 ENV WS_DIR=${WS_DIR}
-
+ENV QT_DEBUG_PLUGINS=1
 # equal to mkdir -> cd to it
 WORKDIR ${WS_DIR}
 
@@ -54,7 +54,7 @@ apt-get install -y x11-apps \
 && apt-get install -y libcanberra-gtk* \
 && apt-get -y install libglfw3-dev \
 && apt-get -y install libglew-dev \
-&& apt-get -y install mesa-utils
+&& apt-get -y install mesa-utils 
 
 RUN apt-get update && apt-get install ros-noetic-turtlesim
 

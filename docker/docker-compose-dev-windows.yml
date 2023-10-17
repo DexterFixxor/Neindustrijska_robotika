@@ -18,7 +18,7 @@ services:
     ipc: "host"
     tty: true
     volumes:
-      - ../src:${WS_DIR}/src
+      - ../src:${WS_DIR}/src:rw
 
     environment:
      - DISPLAY=${DISPLAY_WINDOWS}
