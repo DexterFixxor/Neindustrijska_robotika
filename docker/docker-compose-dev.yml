@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  ros:
+    image: ros_noetic:dev # name of output image
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: dev
+      
+      args:
+        - WS_DIR=${WS_DIR}
+        - USERNAME=${USERNAME:-developer}
+        - UID=${UID:-1000}
+        - GID=${UID:-1000}
+    container_name: ros_noetic
+
+    network_mode: "host"
+    ipc: "host"
+    tty: true
+    volumes:
+      - ../src:${WS_DIR}/src
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+
+    environment:
+     - DISPLAY=${DISPLAY}
+     - QT_X11_NO_MITSHM=1

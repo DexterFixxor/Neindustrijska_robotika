@@ -1,0 +1,7 @@
+turtlesim_controller
+/home/dexter/Programming/workspaces/ROS_ws/devel/.private/turtlesim_controller/cmake.lock /home/dexter/Programming/workspaces/ROS_ws/devel/./cmake.lock
+/home/dexter/Programming/workspaces/ROS_ws/devel/.private/turtlesim_controller/share/turtlesim_controller/cmake/turtlesim_controllerConfig-version.cmake /home/dexter/Programming/workspaces/ROS_ws/devel/share/turtlesim_controller/cmake/turtlesim_controllerConfig-version.cmake
+/home/dexter/Programming/workspaces/ROS_ws/devel/.private/turtlesim_controller/share/turtlesim_controller/cmake/turtlesim_controllerConfig.cmake /home/dexter/Programming/workspaces/ROS_ws/devel/share/turtlesim_controller/cmake/turtlesim_controllerConfig.cmake
+/home/dexter/Programming/workspaces/ROS_ws/devel/.private/turtlesim_controller/lib/pkgconfig/turtlesim_controller.pc /home/dexter/Programming/workspaces/ROS_ws/devel/lib/pkgconfig/turtlesim_controller.pc
+/home/dexter/Programming/workspaces/ROS_ws/devel/.private/turtlesim_controller/lib/turtlesim_controller/cmake.lock /home/dexter/Programming/workspaces/ROS_ws/devel/lib/turtlesim_controller/cmake.lock
+/home/dexter/Programming/workspaces/ROS_ws/devel/.private/turtlesim_controller/lib/turtlesim_controller/turtlesim_controler_node.py /home/dexter/Programming/workspaces/ROS_ws/devel/lib/turtlesim_controller/turtlesim_controler_node.py

@@ -1,0 +1,22 @@
+{
+    "name": "ROS_Noetic",
+    "dockerComposeFile": [
+      "../docker/docker-compose-dev.yml"
+    ],
+    "service": "ros",
+    "workspaceFolder": "/ros_ws",
+    "shutdownAction": "stopCompose",
+    "customizations":{
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-themes",
+                "twxs.cmake",
+                "donjayamanne.python-extension-pack",
+                "eamodio.gitlens",
+                "ms-iot.vscode-ros"
+            ]
+        }
+    }
+    
+}
