@@ -39,4 +39,4 @@ Nakon sto je kontejner pokrenut i uspesno ste izvrsili *attach* na njega, mozete
 2. *rosrun turtlesim turtlesim_node*
 3. *rosrun turtlesim_controler turtlesim_controler_node.py*
 
-treba da se dobije *turtlesim* simulacioni prozor i da se robot pomeri na odgovarajucu tacku. Da bi treca komanda radila, prvobitno je potrebno izvrsiti *source devel/setup.bash* workspace-a.
+treba da se dobije *turtlesim* simulacioni prozor i da se robot pomeri na odgovarajucu tacku. Da bi treca komanda radila, prvobitno je potrebno pokrenuti *catkin build*, a zatim izvrsiti *source devel/setup.bash* komandu.
