@@ -5,7 +5,7 @@ ROS paketi razvijani na vezbama iz predmeta *Neindustrijska robotika* na Mehatro
 ## Potrebni programi
   * [VSCode](https://code.visualstudio.com/download)
   * [Docker](https://www.docker.com/)
-  * [VcXsrv](https://sourceforge.net/projects/vcxsrv/)
+  * [VcXsrv](https://sourceforge.net/projects/vcxsrv/) (za windows)
   * [GIT](https://git-scm.com/downloads)
   
 ## Dodaci za VSCode
