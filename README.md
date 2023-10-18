@@ -64,4 +64,4 @@ Ukoliko zelite da ispratite izmene na github-u, svaki put pre nego sto krenete d
 <code>git switch NEKI_NAZIV</code>
 4. spajanje svoje grane sa novim izmenama iz *dev* grane (ovo nece raditi ukoliko ste menjali kod koji je vec postojao):  
 <code>git merge dev</code>  
-    a. ukoliko ste imali izmena u postojecem kodu, onda umesto *merge* koristiti *rebase* za tacku 4.
+    4.1. ukoliko ste imali izmena u postojecem kodu, onda umesto <code>merge</code> koristiti <code>rebase</code> za tacku 4.
