@@ -11,7 +11,11 @@ URDF je XML fajl koji opisuje specifikaciju robota. Pored kinematske strukture m
 
 ---
 
-URDF se sastoji od zasebnih opisa segmenata i zglobova. 
+URDF se sastoji od 4 glavna dela:
+1. Zaglavlje:   ```<?xml version="1.0"?>```
+2. Glavni tag:  ```<robot></robot>```
+3. Segment:     ```<link></link>```
+4. Zglobovi:    ```<joint></joint>```
 
 ### Link ([wiki](http://wiki.ros.org/urdf/XML/link))
 
@@ -61,3 +65,20 @@ Svaki zglob moze da se sastoji od vise vizualnih, kolizionih i inercionih elemen
 
 Prilikom konstruisanja robota, potrebno je voditi racuna o koordinatnim sistemima. Tu vaznu ulogu igra ```<origin>``` tag.  
 Origin predstavlja transformaciju od segmenta roditelja do segmenta deteta. I takodje je pozicioniran u originu **child** segmenta.
+
+### Visual
+
+Za vizualni i kolizioni deo segmenta moguce je pored prostih oblika koristiti i neke od 3D fajlova (STL, DAE), radi lepse i detaljnijeg prikaza.
+
+Kako bismo ubacitli neki *mesh* u opis vizuala ili kolizije, treba u *geometry* opisu dodati:  
+
+```xml
+<mesh filename="package://$(find package_name)/putanja/do/fajla/fajl.stl>
+```
+
+Ukoliko se radi o prostom obliku, moguce je menjati njegovu boju:
+```xml
+<material name="naziv">
+    <color rgba="0 0 0.8 1"/>
+</material>
+```
