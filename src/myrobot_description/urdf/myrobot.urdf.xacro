@@ -110,9 +110,9 @@
     <!-- ===== SENSORS ===== -->
     <link name="laser_link">
         <visual>
-            <origin xyz="0.0 0.0 -0.025"/>
+            <origin xyz="0.0 0.0 0" rpy="0 0 3.14"/>
             <geometry>
-                <cylinder radius="0.02" length="0.03"/>
+                <mesh filename="file://$(find myrobot_description)/meshes/rplidar-a2.stl"/>
             </geometry>
         </visual>
     </link>
@@ -147,7 +147,7 @@
     </joint>
 
     <joint name="base_laser" type="fixed">
-        <origin xyz="${pos_x_joint} 0 0.10"/>
+        <origin xyz="${pos_x_joint} 0 ${base_height/2 + 0.028}" rpy="0 0 ${3.14}"/>
         <parent link="chassis"/>
         <child link="laser_link"/>
         
