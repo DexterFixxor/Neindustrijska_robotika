@@ -79,6 +79,11 @@
         <material>Gazebo/Purple </material>
     </gazebo>
 
+      
+    <gazebo reference="laser_link">
+        <material>Gazebo/Black </material>
+    </gazebo>
+
     <xacro:macro name="set_link_friction" params="link friction">
         <gazebo reference="${link}">
             <mu1 value="${friction}"/>
@@ -96,7 +101,7 @@
     </xacro:macro>
 
      <gazebo reference="laser_link">
-    <sensor type="ray" name="head_hokuyo_sensor">
+    <sensor type="ray" name="head_rplidar_sensor">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
       <update_rate>40</update_rate>
