@@ -61,6 +61,10 @@ RUN apt-get update && apt-get install ros-noetic-turtlesim
 RUN apt-get update && apt-get install git -y
 RUN apt-get update && apt install python3-catkin-tools -y
 
+RUN apt-get update && apt-get install ros-noetic-joint-state-publisher
+RUN apt-get update && apt-get install ros-noetic-robot-state-publisher -y
+RUN apt-get update && apt-get install ros-noetic-xacro
+RUN apt-get update && apt-get install ros-noetic-ros-controllers -y
  # Install additional developer tools here...
 ENV DEBIAN_FRONTEND=dialog
 

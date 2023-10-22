@@ -1,5 +1,6 @@
 # URDF: Universal Robot Description Format
 
+
 Link ka detaljnijem objasnjenju:
 [http://wiki.ros.org/urdf](http://wiki.ros.org/urdf)
 
@@ -58,4 +59,5 @@ Svaki zglob moze da se sastoji od vise vizualnih, kolizionih i inercionih elemen
  </joint>
 ```
 
-Prilikom konstruisanja robota, potrebno je voditi racuna o koordinatnim sistemima. Tu vaznu ulogu igra ```<origin>``` tag.
+Prilikom konstruisanja robota, potrebno je voditi racuna o koordinatnim sistemima. Tu vaznu ulogu igra ```<origin>``` tag.  
+Origin predstavlja transformaciju od segmenta roditelja do segmenta deteta. I takodje je pozicioniran u originu **child** segmenta.
