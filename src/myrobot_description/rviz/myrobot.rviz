@@ -30,7 +30,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -80,6 +80,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        laser_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         left_wheel:
           Alpha: 1
           Show Axes: false
@@ -109,6 +114,8 @@ Visualization Manager:
           Value: true
         chassis:
           Value: false
+        laser_link:
+          Value: true
         left_wheel:
           Value: false
         odom:
@@ -126,6 +133,8 @@ Visualization Manager:
           base_link:
             chassis:
               ballcaster:
+                {}
+              laser_link:
                 {}
             left_wheel:
               {}
@@ -149,7 +158,7 @@ Visualization Manager:
           Color: 204; 51; 204
           Scale: 1
           Value: true
-        Value: true
+        Value: false
       Enabled: true
       Keep: 1
       Name: Odometry
@@ -167,6 +176,34 @@ Visualization Manager:
         Value: Arrow
       Topic: /odom
       Unreliable: false
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
       Value: true
   Enabled: true
   Global Options:
@@ -196,7 +233,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.9246019124984741
+      Distance: 0.32259219884872437
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -212,9 +249,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.34539860486984253
+      Pitch: -0.004601241089403629
       Target Frame: <Fixed Frame>
-      Yaw: 2.880411148071289
+      Yaw: 4.345424175262451
     Saved: ~
 Window Geometry:
   Displays:
