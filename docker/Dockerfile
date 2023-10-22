@@ -5,7 +5,7 @@ FROM ros:noetic-perception-focal as base
 
 ARG WS_DIR
 ENV WS_DIR=${WS_DIR}
-ENV QT_DEBUG_PLUGINS=1
+
 # equal to mkdir -> cd to it
 WORKDIR ${WS_DIR}
 
@@ -61,10 +61,17 @@ RUN apt-get update && apt-get install ros-noetic-turtlesim
 RUN apt-get update && apt-get install git -y
 RUN apt-get update && apt install python3-catkin-tools -y
 
-RUN apt-get update && apt-get install ros-noetic-joint-state-publisher
+RUN apt-get update \
+&& apt-get install ros-noetic-joint-state-publisher \
+&& apt-get install ros-noetic-joint-state-publisher-gui
 RUN apt-get update && apt-get install ros-noetic-robot-state-publisher -y
 RUN apt-get update && apt-get install ros-noetic-xacro
-RUN apt-get update && apt-get install ros-noetic-ros-controllers -y
+RUN apt-get update && apt-get install ros-noetic-ros-controllers -y 
+RUN apt-get update && apt-get install ros-noetic-gazebo-ros
+RUN apt-get update && apt-get install ros-noetic-gazebo-plugins
+RUN apt-get update && apt-get install ros-noetic-rqt-robot-steering
+
+
  # Install additional developer tools here...
 ENV DEBIAN_FRONTEND=dialog
 

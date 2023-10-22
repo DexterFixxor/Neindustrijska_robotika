@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="set_diff_drive" params="base_width wheel_width wheel_radius">
+
+        <gazebo>
+            <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    
+            </plugin>
+        </gazebo>
+
+        <gazebo>
+            <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+                <!-- Plugin update rate in Hz -->
+                <updateRate>30</updateRate>
+
+                <!-- Name of left joint, defaults to `left_joint` -->
+                <leftJoint>base_left_wheel</leftJoint>
+
+                <!-- Name of right joint, defaults to `right_joint` -->
+                <rightJoint>base_right_wheel</rightJoint>
+
+                <!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
+                <wheelSeparation>${base_width + wheel_width}</wheelSeparation>
+
+                <!-- Diameter of the wheels, in meters, defaults to 0.15 m -->
+                <wheelDiameter>${wheel_radius * 2}</wheelDiameter>
+
+                <!-- Wheel acceleration, in rad/s^2, defaults to 0.0 rad/s^2 -->
+                <wheelAcceleration>1.0</wheelAcceleration>
+
+                <!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
+                <wheelTorque>20</wheelTorque>
+
+                <!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
+                <commandTopic>cmd_vel</commandTopic>
+
+                <!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
+                <odometryTopic>odom</odometryTopic>
+
+                <!-- Odometry frame, defaults to `odom` -->
+                <odometryFrame>odom</odometryFrame>
+
+                <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
+                <robotBaseFrame>base_link</robotBaseFrame>
+
+                <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
+                <odometrySource>1</odometrySource>
+
+                <!-- Set to true to publish transforms for the wheel links, defaults to false -->
+                <publishWheelTF>true</publishWheelTF>
+
+                <!-- Set to true to publish transforms for the odometry, defaults to true -->
+                <publishOdom>true</publishOdom>
+
+                <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
+                <publishWheelJointState>true</publishWheelJointState>
+
+                <!-- Set to true to swap right and left wheels, defaults to true -->
+                <legacyMode>false</legacyMode>
+            </plugin>
+        </gazebo>
+    </xacro:macro>
+
+
+    <gazebo reference="chassis">
+        <material>Gazebo/Turquoise</material>
+    </gazebo>
+
+    <gazebo reference="ballcaster">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Purple </material>
+    </gazebo>
+    
+    <gazebo reference="right_wheel">
+        <material>Gazebo/Purple </material>
+    </gazebo>
+
+    <xacro:macro name="set_link_friction" params="link friction">
+        <gazebo reference="${link}">
+            <mu1 value="${friction}"/>
+            <mu2 value="${friction}"/>
+            <kp value="10000000.0"/>
+            <kd value="1.0"/>
+        <minDepth>0.01</minDepth>
+        </gazebo>
+    </xacro:macro>
+
+    <xacro:macro name="set_all_frictions" >
+        <xacro:set_link_friction link="left_wheel" friction="200"/>
+        <xacro:set_link_friction link="right_wheel" friction="200"/>
+        <xacro:set_link_friction link="ballcaster" friction="0"/>
+    </xacro:macro>
+
+</robot>

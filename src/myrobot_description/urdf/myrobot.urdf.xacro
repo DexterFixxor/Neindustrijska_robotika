@@ -1,4 +1,143 @@
 <?xml version="1.0"?>
-<robot>
+<robot name="myrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find myrobot_description)/urdf/materials.xacro"/>
+    <xacro:include filename="$(find myrobot_description)/urdf/common_macros.xacro"/>
+    <xacro:include filename="$(find myrobot_description)/urdf/myrobot.gazebo.xacro"/>
+
+    <xacro:property name="scale" value="2"/>
+
+    <xacro:property name="base_len" value="${scale * 0.15}"/>
+    <xacro:property name="base_width" value="${scale * 0.1}"/>
+    <xacro:property name="base_height" value="${scale * 0.05}"/>
+
+    <xacro:property name="wheel_r" value="${scale * 0.0331}"/>
+    <xacro:property name="wheel_w" value="${scale * 0.025}"/>
+    <xacro:property name="wheel_mass" value="${scale * scale * 0.05}"/>
+    <xacro:property name="wheel_x_offs" value="${scale * 0.04}"/>
+    <xacro:property name="wheel_y_offs" value="${scale * -0.01}"/>
+    <xacro:property name="wheel_z_offs" value="${scale * 0.000}"/>
+
+    <xacro:property name="pos_x_joint" value="${base_len/2 - wheel_x_offs}"/>
+    <xacro:property name="pos_y_joint" value="${base_width/2 + wheel_y_offs + wheel_w}"/>
+    <xacro:property name="pos_z_joint" value="${wheel_z_offs}"/>
+
+    <xacro:if value="${(base_height/2 - wheel_r) >= 0}">
+           <xacro:property name="ballcaster_radius" value="${base_height/2 - wheel_r}"/>
+
+    </xacro:if>
     
+    <xacro:if value="${ 0 >= (base_height/2 - wheel_r)}">
+           <xacro:property name="ballcaster_radius" value="${-1*(base_height/2 - wheel_r)}"/>
+    </xacro:if>
+    
+
+    <link name="base_link"/>
+    
+    <link name="chassis">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="${base_len} ${base_width} ${base_height}"/>
+            </geometry>
+            <material name="silver"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="${base_len} ${base_width} ${base_height}"/>
+            </geometry>
+        </collision>
+
+        <xacro:box_inertia m="0.01" x="${base_len}" y="${base_width}" z="${base_height}"/>
+
+    </link>
+
+    <link name="ballcaster">
+        <visual>
+            <geometry>
+                <sphere radius="${ballcaster_radius}"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="${ballcaster_radius}"/>
+            </geometry>
+        </collision>
+
+        <xacro:sphere_inertia m="0.01" r="${ballcaster_radius}"/>
+    </link>
+
+    <link name="left_wheel">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find myrobot_description)/meshes/wheel.stl" scale="${scale} ${scale} ${scale}"/>
+            </geometry>
+            <material name="brown"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_r}" length="${wheel_w}"/>
+            </geometry>
+        </collision>
+
+        <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_r}" l="${wheel_w}"/>
+
+    </link>
+
+    <link name="right_wheel">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find myrobot_description)/meshes/wheel.stl" scale="${scale} ${scale} ${scale}"/>
+            </geometry>
+            <material name="brown"/>
+        </visual>
+        
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                <cylinder radius="${wheel_r}" length="${wheel_w}"/>
+            </geometry>
+        </collision>
+
+        <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_r}" l="${wheel_w}"/>
+    </link>
+
+    <!-- ===== JOINTS ===== -->
+    <joint name="base_chasis" type="fixed">
+        <origin xyz="0 0 ${base_height/2 + ballcaster_radius}" rpy = "0 0 0"/>
+        <parent link="base_link"/>
+        <child link="chassis"/>
+    </joint>
+
+    <joint name="base_ballcaster" type="fixed">
+        <origin xyz="${- base_len/2 + 1.5 * ballcaster_radius} 0 ${-1 * base_height/2}" rpy ="0 0 0"/>
+        <parent link="chassis"/>
+        <child link="ballcaster"/>
+    </joint>
+
+    <joint name="base_left_wheel" type="continuous">
+        <origin xyz="${pos_x_joint} ${pos_y_joint} ${pos_z_joint}" rpy="${3.14/2} 0.0 0.0"/>
+        <parent link="chassis"/>
+        <child link="left_wheel"/>
+        <axis xyz="0 0 -1"/>
+        <limit effort="100" velocity="100.0"/>
+
+    </joint>
+        <joint name="base_right_wheel" type="continuous">
+        <origin xyz="${pos_x_joint} ${-pos_y_joint} ${pos_z_joint}" rpy="${-3.14/2} 0.0 0.0"/>
+        <parent link="chassis"/>
+        <child link="right_wheel"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="100" velocity="100.0"/>
+    </joint>
+    
+    <!-- ===== GAZEBO ===== -->
+    <xacro:set_diff_drive base_width="${base_width}" wheel_width="${wheel_w}" wheel_radius="${wheel_r}"/>
+    <xacro:set_all_frictions/> 
+
 </robot>
