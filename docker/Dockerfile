@@ -67,11 +67,12 @@ RUN apt-get update \
 RUN apt-get update && apt-get install ros-noetic-robot-state-publisher -y
 RUN apt-get update && apt-get install ros-noetic-xacro
 RUN apt-get update && apt-get install ros-noetic-ros-controllers -y 
-RUN apt-get update && apt-get install ros-noetic-gazebo-ros
-RUN apt-get update && apt-get install ros-noetic-gazebo-plugins
-RUN apt-get update && apt-get install ros-noetic-rqt-robot-steering
+RUN apt-get update && apt-get install ros-noetic-gazebo-ros -y
+RUN apt-get update && apt-get install ros-noetic-gazebo-plugins -y
+RUN apt-get update && apt-get install ros-noetic-rqt-robot-steering -y
 
-
+RUN apt-get update && apt install python3-pip -y
+RUN apt-get update && pip3 install roboticstoolbox-python
  # Install additional developer tools here...
 ENV DEBIAN_FRONTEND=dialog
 
