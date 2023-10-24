@@ -118,7 +118,7 @@ if __name__ == '__main__':
     client.send_goal(goal)
     client.wait_for_result(rospy.Duration.from_sec(5.0))
 ```
-
+  
 ## Action server C++
 
 ```cpp

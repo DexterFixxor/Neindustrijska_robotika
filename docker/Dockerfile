@@ -71,8 +71,8 @@ RUN apt-get update && apt-get install ros-noetic-gazebo-ros -y
 RUN apt-get update && apt-get install ros-noetic-gazebo-plugins -y
 RUN apt-get update && apt-get install ros-noetic-rqt-robot-steering -y
 
-RUN apt-get update && apt install python3-pip -y
-RUN apt-get update && pip3 install roboticstoolbox-python
+# RUN apt-get update && apt install python3-pip -y
+# RUN apt-get update && pip3 install roboticstoolbox-python
  # Install additional developer tools here...
 ENV DEBIAN_FRONTEND=dialog
 
