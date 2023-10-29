@@ -11,7 +11,7 @@
     <arg name="headless" default="false"/>
     <arg name="debug" default="false"/>
 
-    <arg name="world_name" default="$(find myrobot_gazebo)/worlds/corridor.world"/>
+    <arg name="world_name" default="$(find myrobot_gazebo)/worlds/clearpath_playpen.world"/>
     <arg name="x_pos" default="0.0"/>
     <arg name="y_pos" default="0.0"/>
     <arg name="z_pos" default="0.0"/>

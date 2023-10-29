@@ -1,0 +1,7 @@
+<launch>
+
+    <node pkg="gmapping" type="slam_gmapping" name="myrobot_slam" output="screen">
+        <rosparam command="load" file="$(find myrobot_slam)/config/gmapping.yaml" />
+    </node>
+
+</launch>

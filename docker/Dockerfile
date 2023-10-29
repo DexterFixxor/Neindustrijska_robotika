@@ -61,6 +61,7 @@ RUN apt-get update && apt-get install ros-noetic-turtlesim
 RUN apt-get update && apt-get install git -y
 RUN apt-get update && apt install python3-catkin-tools -y
 
+# Vezbe 2
 RUN apt-get update \
 && apt-get install ros-noetic-joint-state-publisher \
 && apt-get install ros-noetic-joint-state-publisher-gui
@@ -71,9 +72,10 @@ RUN apt-get update && apt-get install ros-noetic-gazebo-ros -y
 RUN apt-get update && apt-get install ros-noetic-gazebo-plugins -y
 RUN apt-get update && apt-get install ros-noetic-rqt-robot-steering -y
 
-# RUN apt-get update && apt install python3-pip -y
-# RUN apt-get update && pip3 install roboticstoolbox-python
- # Install additional developer tools here...
+# Vezbe 3
+RUN apt-get update && apt-get install ros-noetic-gmapping -y
+RUN apt-get update && apt-get install ros-noetic-move-base -y
+RUN apt-get update && apt-get install ros-noetic-navigation -y
 ENV DEBIAN_FRONTEND=dialog
 
 RUN addgroup --gid ${GID} ${USERNAME} \

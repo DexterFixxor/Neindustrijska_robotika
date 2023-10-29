@@ -1,0 +1,23 @@
+# Short answer: 
+#   I think setting both parameters to .8 would work for you.
+#
+# Long answer:
+#   For each sensor, you specify a sensor_frame and the distance from that frame to each observation is measured.
+# If the observation source is set to 'marking', then it will place a lethal obstacle on the costmap if that distance is less than obstacle range. 
+# Similarly, if the source is set to 'clearing' then it will mark all of the space between the sensor frame and the observation as 
+# free space if the distance is less than the raytrace range. Otherwise, it will only clear the line that is raytrace_range long 
+# (closest to the sensor). In your particular case, you MIGHT want different values for these two parameters if for instance, 
+# you only want to mark with certainty points <800mm, but want to clear up to 1200mm (for example).
+
+# The maximum range in meters at which to insert obstacles into the costmap using sensor data. 
+obstacle_range: 3.0
+raytrace_range: 3.5
+
+#footprint: [[x0, y0], [x1, y1], ... [xn, yn]]
+robot_radius: 0.3
+# The inflation radius should be set to the maximum distance from obstacles at which a cost should be incurred.
+inflation_radius: 0.3
+cost_scaling_factor: 2.0
+
+observation_sources: laser_scan_sensor
+laser_scan_sensor: {sensor_frame: laser_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
